@@ -38,4 +38,9 @@ public class staleHandle {
         driver.findElement(locator).click();
 
     }
+    public static String safeGetText(WebDriver driver, By locator) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator)).getText();
+    }
+
 }

@@ -1,104 +1,89 @@
-\# TenForce Automation Testing Framework
+# TenForce Website Automation Test
 
-
-
-This project contains automated UI tests for navigating the TenForce website using \*\*Selenium WebDriver\*\*, \*\*Java\*\*, and \*\*TestNG\*\*, built using the \*\*Page Object Model (POM)\*\* architecture. The goal of this framework is to provide a clean, scalable, and maintainable structure for web test automation.
-
-
+## Overview
+This project contains an automated UI test for the TenForce website using **Selenium WebDriver with Java and TestNG**.
+The test validates navigation across the Career section and verifies the presence of a specific text on the Job Openings page.
 
 ---
 
-
-
-\## How to Run the Tests
-
-
-
-Follow the steps below to execute the automation suite:
-
-
-
-\### 1. Clone the repository
-
-```bash
-
-git clone https://github.com/deoreshubham531-pixel/TenForceAutomation.git
-
-cd TenForceAutomation
-
-```
-
-
-
-\### 2. Install dependencies
-
-Ensure that Java (JDK 11+), Maven, and Chrome browser are installed.
-
-
-
-Then run:
-
-```bash
-
-mvn clean install
-
-```
-
-
-
-\### 3. Execute the test suite
-
-Run all tests:
-
-```bash
-
-mvn test
-
-```
-
-
-
-Run a specific TestNG test class:
-
-```bash
-
-mvn -Dtest=TenForceTest test
-
-```
-
-
+##  Test Scenario Covered
+1. Open https://www.tenforce.com/
+2. Navigate to the **Career** page
+3. Open **Life at TenForce** section
+4. Open the **Life of Two Interns** article
+5. Scroll through the article
+6. Navigate back to **Job Openings**
+7. Verify the text:
+   **“Feel free to send your CV to”**
 
 ---
 
-
-
-\## Framework Choice Justification
-
-
-
-The chosen tech stack—\*\*Selenium WebDriver, Java, and TestNG\*\*—is widely adopted across the industry for UI test automation. Selenium provides powerful browser automation capabilities and cross-browser support. Java offers strong stability, a rich ecosystem, and smooth integration with tools like Maven. TestNG enhances the testing workflow with features such as annotations, parallel execution, grouping, and detailed reporting. Together, these tools create a reliable, maintainable, and scalable automation framework suitable for real-world projects and CI/CD integration.
-
-
+## Framework & Tools Used
+- Java
+- Selenium WebDriver
+- TestNG
+- Maven
+- Page Object Model (POM)
 
 ---
 
-
-
-\## Short Explanation of Architecture
-
-
-
-This project uses the \*\*Page Object Model (POM)\*\* design pattern, where each webpage is represented by a dedicated Java class containing its elements and user actions. This separation ensures cleaner tests, improved readability, reusability of code, and easier maintenance when UI changes occur.
-
-
-
-The architecture also includes a `clickHelper` utility that handles synchronization issues such as stale elements and visibility conditions, making tests more stable and less flaky. The test classes only call high-level page methods, keeping them simple, readable, and focused on verifying business flow rather than UI handling logic.
-
-
+##  Framework Choice Justification
+Selenium with Java is a widely adopted UI automation solution that provides strong browser support and flexibility.
+TestNG enables structured test execution, assertions, and test lifecycle management.
+Page Object Model (POM) improves test maintainability by separating test logic from UI interactions.
 
 ---
 
+## Architecture Overview
+The framework follows the Page Object Model (POM) design pattern:
+- Page classes contain locators and page-level actions
+- Test classes manage test flow and validations
+- Helper utilities handle reusable actions like waits and safe clicks
 
+This architecture ensures scalability, readability, and ease of maintenance.
 
+---
 
+## Project Structure
+```
+src
+ ├── main
+ │   └── java
+ │       └── clickHelper
+ │           └── staleHandle.java
+ └── test
+     └── java
+         ├── pages
+         │   ├── HomePage.java
+         │   ├── CareerPage.java
+         │   ├── JobOpenings.java
+         └── TenForceTest.java
+```
+
+---
+
+## How to Run the Tests
+
+### Prerequisites
+- Java installed
+- Maven installed
+- Chrome browser installed
+
+### Run from Command Line
+```
+mvn clean test
+```
+
+---
+
+## Assertions
+All assertions are meaningful and validate the expected UI behavior.
+
+Example:
+```
+Assert.assertEquals(actualText, expectedText,
+        "CV text does not match the expected value");
+```
+
+---
 

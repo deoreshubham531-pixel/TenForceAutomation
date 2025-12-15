@@ -22,6 +22,8 @@ public class HomePage {
     @FindBy(css= "button.gdpr-agreement")
     WebElement iAgree;
 
+
+
     public HomePage(WebDriver driver){
         this.driver= driver;
         PageFactory.initElements(driver,this);
